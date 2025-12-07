@@ -47,16 +47,17 @@ cp .env.example .env
 #### ngrok のインストール
 
 **macOS (Homebrew):**
+
 ```bash
 brew install ngrok/ngrok/ngrok
 ```
 
 **その他のプラットフォーム:**
-[ngrok公式サイト](https://ngrok.com/download)からダウンロードしてインストールしてください。
+[ngrok 公式サイト](https://ngrok.com/download)からダウンロードしてインストールしてください。
 
 #### ngrok のセットアップ
 
-1. [ngrok公式サイト](https://ngrok.com/)でアカウントを作成（無料プランで利用可能）
+1. [ngrok 公式サイト](https://ngrok.com/)でアカウントを作成（無料プランで利用可能）
 2. 認証トークンを取得（ダッシュボードから）
 3. 認証トークンを設定：
 
@@ -66,7 +67,7 @@ ngrok config add-authtoken YOUR_AUTH_TOKEN
 
 #### 開発時の起動手順
 
-1. **ターミナル1: 開発サーバーを起動**
+1. **ターミナル 1: 開発サーバーを起動**
 
 ```bash
 npm run dev
@@ -74,7 +75,7 @@ npm run dev
 
 サーバーは`http://localhost:3000`で起動します。
 
-2. **ターミナル2: ngrok を起動**
+2. **ターミナル 2: ngrok を起動**
 
 ```bash
 ngrok http 3000
