@@ -1,0 +1,50 @@
+{
+	"moods": {
+		"relax": {
+			"keywords": ["リラックス", "リラックスしたい", "ゆっくり", "のんびり", "落ち着きたい"],
+			"beers": [
+				{
+					"name": "エビスビール",
+					"description": "まろやかで飲みやすい、リラックスにぴったりのビールです。",
+					"url": "https://www.sapporobeer.jp/ebisu/"
+				},
+				{
+					"name": "サッポロラガービール",
+					"description": "スッキリとした味わいで、ゆっくりと楽しめるビールです。",
+					"url": "https://www.sapporobeer.jp/lager/"
+				}
+			]
+		},
+		"tired": {
+			"keywords": ["疲れた", "疲労", "つかれた", "だるい", "疲れ"],
+			"beers": [
+				{
+					"name": "キリン一番搾り",
+					"description": "すっきりとした味わいで、疲れた体をリフレッシュしてくれます。",
+					"url": "https://www.kirin.co.jp/products/beer/ichibanshibori/"
+				},
+				{
+					"name": "アサヒスーパードライ",
+					"description": "キレのある味わいで、疲労回復に最適です。",
+					"url": "https://www.asahibeer.co.jp/products/superdry/"
+				}
+			]
+		},
+		"refresh": {
+			"keywords": ["スッキリ", "スッキリしたい", "さっぱり", "爽快", "リフレッシュ"],
+			"beers": [
+				{
+					"name": "アサヒスーパードライ",
+					"description": "キレのある味わいで、スッキリとした飲み心地です。",
+					"url": "https://www.asahibeer.co.jp/products/superdry/"
+				},
+				{
+					"name": "サントリーザ・プレミアム・モルツ",
+					"description": "上品な味わいで、爽快感を味わえます。",
+					"url": "https://www.suntory.co.jp/beer/premium-malts/"
+				}
+			]
+		}
+	}
+}
+
