@@ -15,14 +15,39 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// 環境変数の検証
+const channelAccessToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
+const channelSecret = process.env.LINE_CHANNEL_SECRET;
+
+if (!channelAccessToken || !channelSecret) {
+  console.error("❌ エラー: 環境変数が設定されていません");
+  console.error("以下の環境変数を設定してください:");
+  if (!channelAccessToken) {
+    console.error("  - LINE_CHANNEL_ACCESS_TOKEN");
+  }
+  if (!channelSecret) {
+    console.error("  - LINE_CHANNEL_SECRET");
+  }
+  console.error("\n.env ファイルを確認してください。");
+  process.exit(1);
+}
+
+// Channel Access Token の形式を検証（通常は長い文字列）
+if (channelAccessToken.length < 50) {
+  console.warn(
+    "⚠️  警告: LINE_CHANNEL_ACCESS_TOKEN が短すぎる可能性があります"
+  );
+  console.warn(`現在の値の長さ: ${channelAccessToken.length} 文字`);
+}
+
 // LINE Bot設定
 const clientConfig: ClientConfig = {
-  channelAccessToken: process.env.LINE_CHANNEL_ACCESS_TOKEN || "",
-  channelSecret: process.env.LINE_CHANNEL_SECRET || "",
+  channelAccessToken,
+  channelSecret,
 };
 
 const middlewareConfig: MiddlewareConfig = {
-  channelSecret: process.env.LINE_CHANNEL_SECRET || "",
+  channelSecret,
 };
 
 const client = new Client(clientConfig);
@@ -67,6 +92,9 @@ app.use(
 
 // サーバー起動
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-  console.log(`Webhook URL: http://localhost:${PORT}/webhook`);
+  console.log(`✅ Server is running on port ${PORT}`);
+  console.log(`📡 Webhook URL: http://localhost:${PORT}/webhook`);
+  console.log(
+    `🔑 Channel Access Token: ${channelAccessToken.substring(0, 20)}...`
+  );
 });

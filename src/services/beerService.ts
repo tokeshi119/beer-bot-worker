@@ -1,4 +1,4 @@
-import beersData from '../data/beers.json';
+import beersData from '../data/beers.json' with { type: 'json' };
 
 export interface Beer {
 	name: string;

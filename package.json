@@ -8,7 +8,8 @@
 		"build": "tsc",
 		"start": "node dist/index.js",
 		"lint": "eslint src --ext .ts",
-		"type-check": "tsc --noEmit"
+		"type-check": "tsc --noEmit",
+		"ngrok": "ngrok http 3000"
 	},
 	"dependencies": {
 		"@line/bot-sdk": "^9.3.0",
