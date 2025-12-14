@@ -4,6 +4,8 @@ LINE Messaging API を使用したビール推薦 Bot です。ユーザーの�
 
 📖 **詳細な仕様書**: [外部仕様書](./docs/external-specification.md) を参照してください。
 
+🚀 **Staging 環境 (AWS Lambda)**: [Staging 環境構築ガイド](./docs/staging-aws-lambda.md) を参照してください。
+
 ## 機能
 
 - ユーザーの気分（「リラックスしたい」「疲れた」「スッキリしたい」など）に応じたビール推薦
@@ -150,12 +152,17 @@ npm start
 beer-bot-worker/
 ├── package.json
 ├── tsconfig.json
+├── template.yaml              # AWS SAM テンプレート
 ├── .env.example
 ├── README.md
 ├── docs/
-│   └── external-specification.md  # 外部仕様書
+│   ├── external-specification.md  # 外部仕様書
+│   └── staging-aws-lambda.md      # Staging環境構築ガイド
 └── src/
-    ├── index.ts              # メインサーバー
+    ├── index.ts              # Express サーバー（ローカル開発用）
+    ├── lambda/
+    │   ├── handler.ts        # Lambda ハンドラ（staging用）
+    │   └── lineSignature.ts  # LINE署名検証ユーティリティ
     ├── handlers/
     │   └── messageHandler.ts # メッセージ処理ロジック
     ├── services/
@@ -170,27 +177,34 @@ beer-bot-worker/
 
 ## デプロイ
 
-### Cloudflare Workers へのデプロイ
+### AWS Lambda (Staging 環境)
 
-**注意**: 現在の実装は Express サーバーです。Cloudflare Workers で直接動作させるには、`@cloudflare/workers-express`などのアダプターが必要です。
+**推奨**: ngrok に依存しない固定 URL の staging 環境として、AWS Lambda × API Gateway を使用できます。
 
-通常の Node.js サーバーとしてデプロイする場合は、以下のプラットフォームを推奨します：
+詳細は [Staging 環境構築ガイド](./docs/staging-aws-lambda.md) を参照してください。
 
-- Railway
-- Render
-- Heroku
+**クイックスタート**:
 
-Cloudflare Workers で動作させる場合は、Express の代わりに Hono などのフレームワークを使用することを検討してください。
+```bash
+# ビルド
+npm run build
+npm run sam:build
+
+# デプロイ（初回はガイド付き）
+npm run sam:deploy
+```
 
 ### その他のプラットフォーム
 
 Express サーバーとして動作するため、以下のようなプラットフォームにデプロイ可能です：
 
-- Heroku
+- **AWS Lambda** (Serverless Express) - staging 環境として推奨
 - Railway
 - Render
+- Heroku
 - Vercel（Serverless Functions）
-- AWS Lambda（Serverless Express）
+
+**注意**: Cloudflare Workers で直接動作させるには、`@cloudflare/workers-express`などのアダプターが必要です。または、Express の代わりに Hono などのフレームワークを使用することを検討してください。
 
 ## ライセンス
 

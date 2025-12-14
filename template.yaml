@@ -1,0 +1,53 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: LINE Beer Bot - Staging Environment (Lambda + API Gateway)
+
+Globals:
+  Function:
+    Timeout: 30
+    MemorySize: 256
+    Runtime: nodejs20.x
+    Environment:
+      Variables:
+        LINE_CHANNEL_ACCESS_TOKEN: !Ref ChannelAccessToken
+        LINE_CHANNEL_SECRET: !Ref ChannelSecret
+
+Parameters:
+  ChannelAccessToken:
+    Type: String
+    Description: LINE Channel Access Token
+    NoEcho: true
+  ChannelSecret:
+    Type: String
+    Description: LINE Channel Secret
+    NoEcho: true
+
+Resources:
+  LineBeerBotFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: dist/lambda/handler.handler
+      CodeUri: .
+      Events:
+        WebhookEvent:
+          Type: HttpApi
+          Properties:
+            Path: /webhook
+            Method: post
+        HealthEvent:
+          Type: HttpApi
+          Properties:
+            Path: /health
+            Method: get
+
+Outputs:
+  ApiGatewayUrl:
+    Description: API Gateway HTTP API endpoint URL
+    Value: !Sub 'https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com'
+  WebhookUrl:
+    Description: Webhook URL for LINE Developers Console
+    Value: !Sub 'https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/webhook'
+  HealthCheckUrl:
+    Description: Health check endpoint URL
+    Value: !Sub 'https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/health'
+

@@ -9,7 +9,10 @@
 		"start": "node dist/index.js",
 		"lint": "eslint src --ext .ts",
 		"type-check": "tsc --noEmit",
-		"ngrok": "ngrok http 3000"
+		"ngrok": "ngrok http 3000",
+		"sam:build": "sam build",
+		"sam:local": "sam local start-api",
+		"sam:deploy": "sam deploy --guided"
 	},
 	"dependencies": {
 		"@line/bot-sdk": "^9.3.0",
@@ -17,10 +20,10 @@
 		"express": "^4.18.2"
 	},
 	"devDependencies": {
+		"@types/aws-lambda": "^8.10.130",
 		"@types/express": "^4.17.21",
 		"@types/node": "^20.10.0",
 		"tsx": "^4.7.0",
 		"typescript": "^5.5.2"
 	}
 }
-
