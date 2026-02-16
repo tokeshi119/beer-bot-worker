@@ -1,4 +1,4 @@
-import beersData from '../data/beers.json' assert { type: 'json' };
+import beersData from '../data/beers.json';
 
 export interface Beer {
 	name: string;
@@ -11,7 +11,7 @@ export interface BeerRecommendation {
 	beer: Beer;
 }
 
-type MoodKey = 'relax' | 'tired' | 'refresh';
+type MoodKey = 'relax' | 'tired' | 'refresh' | 'celebrate' | 'hot' | 'bitter' | 'fruity' | 'food';
 
 /**
  * ユーザーのメッセージから気分を判定し、適切なビールを推薦する
@@ -63,14 +63,14 @@ export class BeerService {
 	 * 初期メッセージを取得する
 	 */
 	getInitialMessage(): string {
-		return '今の気分は？\n\n例：\n・リラックスしたい\n・疲れた\n・スッキリしたい';
+		return '今の気分は？🍺\n\n例：\n・リラックスしたい\n・疲れた\n・スッキリしたい\n・お祝いしたい\n・暑い！\n・苦いの飲みたい\n・フルーティーなやつ\n・ごはんに合うやつ';
 	}
 
 	/**
 	 * 気分が判定できない場合のメッセージを取得する
 	 */
 	getUnknownMoodMessage(): string {
-		return 'すみません、気分がよくわかりませんでした。\n\n以下のような気分を教えてください：\n・リラックスしたい\n・疲れた\n・スッキリしたい';
+		return 'すみません、気分がよくわかりませんでした。\n\n以下のような気分を教えてください：\n・リラックスしたい\n・疲れた\n・スッキリしたい\n・お祝いしたい\n・暑い！\n・苦いの飲みたい\n・フルーティーなやつ\n・ごはんに合うやつ';
 	}
 }
 

@@ -1,12 +1,21 @@
-import { Client, MessageEvent, TextMessage, WebhookEvent } from '@line/bot-sdk';
-import { BeerService } from '../services/beerService.js';
+import { BeerService } from '../services/beerService';
+import { replyMessage } from '../lib/line';
+
+interface WebhookEvent {
+	type: string;
+	replyToken: string;
+	message: {
+		type: string;
+		text: string;
+	};
+}
 
 export class MessageHandler {
-	private client: Client;
+	private channelAccessToken: string;
 	private beerService: BeerService;
 
-	constructor(client: Client) {
-		this.client = client;
+	constructor(channelAccessToken: string) {
+		this.channelAccessToken = channelAccessToken;
 		this.beerService = new BeerService();
 	}
 
@@ -18,19 +27,16 @@ export class MessageHandler {
 			return;
 		}
 
-		const messageEvent = event as MessageEvent;
-		const textMessage = messageEvent.message as TextMessage;
-		const replyToken = messageEvent.replyToken;
-		const userMessage = textMessage.text;
+		const replyToken = event.replyToken;
+		const userMessage = event.message.text;
 
-		// メッセージを処理して返信を生成
-		const replyMessage = this.processMessage(userMessage);
+		const replyText = this.processMessage(userMessage);
 
-		// LINEに返信を送信
-		await this.client.replyMessage(replyToken, {
-			type: 'text',
-			text: replyMessage,
-		});
+		await replyMessage(
+			replyToken,
+			[{ type: 'text', text: replyText }],
+			this.channelAccessToken,
+		);
 	}
 
 	/**
@@ -39,7 +45,6 @@ export class MessageHandler {
 	private processMessage(message: string): string {
 		const trimmedMessage = message.trim();
 
-		// 空メッセージや挨拶の場合は初期メッセージを返す
 		if (
 			!trimmedMessage ||
 			trimmedMessage === 'こんにちは' ||
@@ -50,14 +55,12 @@ export class MessageHandler {
 			return this.beerService.getInitialMessage();
 		}
 
-		// ビール推薦を試みる
 		const recommendation = this.beerService.recommendBeer(trimmedMessage);
 
 		if (recommendation) {
 			return this.formatBeerRecommendation(recommendation);
 		}
 
-		// 気分が判定できない場合
 		return this.beerService.getUnknownMoodMessage();
 	}
 
@@ -72,4 +75,3 @@ export class MessageHandler {
 		return `おすすめのビールはこちらです！🍺\n\n【${beer.name}】\n${beer.description}\n\n商品URL:\n${beer.url}`;
 	}
 }
-

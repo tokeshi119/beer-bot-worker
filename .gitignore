@@ -8,7 +8,14 @@ node_modules/
 
 # Build output
 dist/
+dist-worker/
 *.tsbuildinfo
+
+# Claude Code
+.claude/
+
+# Local settings
+settings.local.json
 
 # Logs
 *.log

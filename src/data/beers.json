@@ -1,50 +1,179 @@
 {
 	"moods": {
 		"relax": {
-			"keywords": ["リラックス", "リラックスしたい", "ゆっくり", "のんびり", "落ち着きたい"],
+			"keywords": ["リラックス", "リラックスしたい", "ゆっくり", "のんびり", "落ち着きたい", "まったり", "癒されたい"],
 			"beers": [
 				{
 					"name": "エビスビール",
-					"description": "まろやかで飲みやすい、リラックスにぴったりのビールです。",
+					"description": "まろやかで深いコク。ゆっくり味わいたい夜にぴったりです。",
 					"url": "https://www.sapporobeer.jp/ebisu/"
 				},
 				{
-					"name": "サッポロラガービール",
-					"description": "スッキリとした味わいで、ゆっくりと楽しめるビールです。",
-					"url": "https://www.sapporobeer.jp/lager/"
+					"name": "ザ・プレミアム・モルツ 香るエール",
+					"description": "フルーティーな香りとやわらかい口当たり。リラックスタイムのお供に。",
+					"url": "https://www.suntory.co.jp/beer/premium-malts/kaoru/"
+				},
+				{
+					"name": "よなよなエール",
+					"description": "柑橘系のアロマホップが香るエール。まったりした時間を演出します。",
+					"url": "https://yohobrewing.com/yonayona/"
 				}
 			]
 		},
 		"tired": {
-			"keywords": ["疲れた", "疲労", "つかれた", "だるい", "疲れ"],
+			"keywords": ["疲れた", "疲労", "つかれた", "だるい", "疲れ", "くたくた", "ヘトヘト", "へとへと"],
 			"beers": [
 				{
 					"name": "キリン一番搾り",
-					"description": "すっきりとした味わいで、疲れた体をリフレッシュしてくれます。",
+					"description": "雑味のないすっきりした旨味。疲れた体にスッと染み渡ります。",
 					"url": "https://www.kirin.co.jp/products/beer/ichibanshibori/"
 				},
 				{
 					"name": "アサヒスーパードライ",
-					"description": "キレのある味わいで、疲労回復に最適です。",
-					"url": "https://www.asahibeer.co.jp/products/superdry/"
+					"description": "キレ味抜群の辛口ビール。一口目で疲れが吹き飛びます。",
+					"url": "https://www.asahibeer.co.jp/superdry/"
+				},
+				{
+					"name": "サッポロ黒ラベル",
+					"description": "麦の旨味と爽やかな後味の完璧なバランス。頑張った自分へのご褒美に。",
+					"url": "https://www.sapporobeer.jp/kurolabel/"
 				}
 			]
 		},
 		"refresh": {
-			"keywords": ["スッキリ", "スッキリしたい", "さっぱり", "爽快", "リフレッシュ"],
+			"keywords": ["スッキリ", "スッキリしたい", "さっぱり", "爽快", "リフレッシュ", "すっきり", "さわやか"],
 			"beers": [
 				{
 					"name": "アサヒスーパードライ",
-					"description": "キレのある味わいで、スッキリとした飲み心地です。",
-					"url": "https://www.asahibeer.co.jp/products/superdry/"
+					"description": "辛口のキレ味でスカッと爽快。スッキリしたいならまずこれ。",
+					"url": "https://www.asahibeer.co.jp/superdry/"
 				},
 				{
-					"name": "サントリーザ・プレミアム・モルツ",
-					"description": "上品な味わいで、爽快感を味わえます。",
+					"name": "キリン一番搾り",
+					"description": "一番搾り麦汁だけを使った澄んだ味わい。爽やかにリフレッシュできます。",
+					"url": "https://www.kirin.co.jp/products/beer/ichibanshibori/"
+				},
+				{
+					"name": "サントリー ザ・プレミアム・モルツ",
+					"description": "華やかな香りとクリアな後味。上質なリフレッシュを楽しめます。",
 					"url": "https://www.suntory.co.jp/beer/premium-malts/"
+				}
+			]
+		},
+		"celebrate": {
+			"keywords": ["お祝い", "乾杯", "おめでとう", "記念", "パーティー", "祝い", "めでたい", "祝杯"],
+			"beers": [
+				{
+					"name": "エビスビール",
+					"description": "恵比寿様のラベルが縁起良し。特別な日の乾杯にふさわしい一本。",
+					"url": "https://www.sapporobeer.jp/ebisu/"
+				},
+				{
+					"name": "ザ・プレミアム・モルツ",
+					"description": "プレミアムな味わいで、お祝いの場を華やかに彩ります。",
+					"url": "https://www.suntory.co.jp/beer/premium-malts/"
+				},
+				{
+					"name": "アサヒスーパードライ ドライクリスタル",
+					"description": "軽やかでクリアな味わい。みんなで乾杯するならこれ。",
+					"url": "https://www.asahibeer.co.jp/superdry/drycrystal/"
+				},
+				{
+					"name": "よなよなエール",
+					"description": "いつもと違う特別感のあるクラフトビール。お祝いにぴったり。",
+					"url": "https://yohobrewing.com/yonayona/"
+				}
+			]
+		},
+		"hot": {
+			"keywords": ["暑い", "猛暑", "真夏", "キンキン", "冷たい", "あつい", "灼熱", "夏バテ"],
+			"beers": [
+				{
+					"name": "アサヒスーパードライ",
+					"description": "キンキンに冷やして一気に飲み干す。暑い日の最強の相棒。",
+					"url": "https://www.asahibeer.co.jp/superdry/"
+				},
+				{
+					"name": "サッポロ黒ラベル",
+					"description": "爽やかな飲み口で暑さを忘れる。ゴクゴクいけるうまさ。",
+					"url": "https://www.sapporobeer.jp/kurolabel/"
+				},
+				{
+					"name": "キリン一番搾り",
+					"description": "すっきりした味わいが暑い日にぴったり。何杯でもいけます。",
+					"url": "https://www.kirin.co.jp/products/beer/ichibanshibori/"
+				},
+				{
+					"name": "水曜日のネコ",
+					"description": "小麦のやさしい口当たりとフルーティーな香り。暑い日にも爽やかに飲めます。",
+					"url": "https://yohobrewing.com/suiyoubi/"
+				}
+			]
+		},
+		"bitter": {
+			"keywords": ["苦い", "苦味", "ガツン", "パンチ", "IPA", "ホップ", "ビター", "にがい"],
+			"beers": [
+				{
+					"name": "インドの青鬼",
+					"description": "驚異的な苦味とコク。IPAの強烈なパンチを味わいたいならこれ。",
+					"url": "https://yohobrewing.com/aooni/"
+				},
+				{
+					"name": "キリン一番搾り",
+					"description": "麦の旨味の中にしっかりした苦味。バランスの取れた苦味を楽しめます。",
+					"url": "https://www.kirin.co.jp/products/beer/ichibanshibori/"
+				},
+				{
+					"name": "サッポロ黒ラベル",
+					"description": "ホップの苦味と麦芽の旨味が調和。王道のビールらしい苦味。",
+					"url": "https://www.sapporobeer.jp/kurolabel/"
+				}
+			]
+		},
+		"fruity": {
+			"keywords": ["フルーティー", "甘い", "飲みやすい", "果物", "華やか", "女子会", "軽い", "かるい"],
+			"beers": [
+				{
+					"name": "水曜日のネコ",
+					"description": "ベルジャンホワイト系のやさしい味わい。オレンジピールとコリアンダーが香ります。",
+					"url": "https://yohobrewing.com/suiyoubi/"
+				},
+				{
+					"name": "ザ・プレミアム・モルツ 香るエール",
+					"description": "フルーティーで華やかな香り。ビールが苦手な人にもおすすめ。",
+					"url": "https://www.suntory.co.jp/beer/premium-malts/kaoru/"
+				},
+				{
+					"name": "よなよなエール",
+					"description": "柑橘系ホップのフルーティーなアロマ。香り豊かなエールビール。",
+					"url": "https://yohobrewing.com/yonayona/"
+				}
+			]
+		},
+		"food": {
+			"keywords": ["ご飯", "食事", "料理", "おつまみ", "つまみ", "ごはん", "飯", "ディナー", "晩酌"],
+			"beers": [
+				{
+					"name": "アサヒスーパードライ",
+					"description": "辛口でキレがあるから、どんな料理にも合う万能選手。",
+					"url": "https://www.asahibeer.co.jp/superdry/"
+				},
+				{
+					"name": "キリン一番搾り",
+					"description": "雑味のない澄んだ味わいが料理の味を引き立てます。",
+					"url": "https://www.kirin.co.jp/products/beer/ichibanshibori/"
+				},
+				{
+					"name": "サッポロ黒ラベル",
+					"description": "大人の星のもとに生まれたビール。食事と合わせて最高の晩酌を。",
+					"url": "https://www.sapporobeer.jp/kurolabel/"
+				},
+				{
+					"name": "エビスビール",
+					"description": "コクと深みが料理のうまみと共鳴。ちょっと贅沢な食卓に。",
+					"url": "https://www.sapporobeer.jp/ebisu/"
 				}
 			]
 		}
 	}
 }
-
