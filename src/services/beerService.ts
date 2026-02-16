@@ -38,25 +38,26 @@ export class BeerService {
 	}
 
 	/**
-	 * 気分に応じたビールをランダムに推薦する
+	 * 気分に応じたビールをランダムに推薦する（テキスト入力用）
 	 */
 	recommendBeer(message: string): BeerRecommendation | null {
 		const mood = this.detectMood(message);
+		if (!mood) return null;
+		return this.pickRandomBeer(mood);
+	}
 
-		if (!mood) {
-			return null;
-		}
+	/**
+	 * intentキーから直接ビールを推薦する（postback用）
+	 */
+	recommendBeerByIntent(intent: string): BeerRecommendation | null {
+		if (!(intent in this.beers)) return null;
+		return this.pickRandomBeer(intent as MoodKey);
+	}
 
-		const availableBeers = this.beers[mood as MoodKey].beers;
-		
-		// ランダムに1つ選択
+	private pickRandomBeer(mood: MoodKey): BeerRecommendation {
+		const availableBeers = this.beers[mood].beers;
 		const randomIndex = Math.floor(Math.random() * availableBeers.length);
-		const selectedBeer = availableBeers[randomIndex];
-
-		return {
-			mood,
-			beer: selectedBeer,
-		};
+		return { mood, beer: availableBeers[randomIndex] };
 	}
 
 	/**

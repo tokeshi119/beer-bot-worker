@@ -29,12 +29,30 @@ export async function verifyLineSignature(
 	return signature === expected;
 }
 
+export type QuickReplyItem = {
+	type: 'action';
+	action: {
+		type: 'postback';
+		label: string;
+		data: string;
+		displayText: string;
+	};
+};
+
+export type LineMessage = {
+	type: 'text';
+	text: string;
+	quickReply?: {
+		items: QuickReplyItem[];
+	};
+};
+
 /**
  * LINE Reply API でメッセージを返信する
  */
 export async function replyMessage(
 	replyToken: string,
-	messages: Array<{ type: string; text: string }>,
+	messages: LineMessage[],
 	channelAccessToken: string,
 ): Promise<void> {
 	const res = await fetch('https://api.line.me/v2/bot/message/reply', {
